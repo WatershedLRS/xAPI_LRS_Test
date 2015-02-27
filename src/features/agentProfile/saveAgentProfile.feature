@@ -52,7 +52,7 @@ Scenario: Good save agent profile: [type] request with [property] set to '[value
 
     Where:
         type    | property             | value
-        typical | Content-Type header  | test content type
+        typical | Content-Type header  | application/unknown
         typical | stateId parameter    | test state id
         typical | content              | test content
         JSON    | method               | POST
@@ -86,15 +86,16 @@ Scenario: Bad save agent profile: typical request with bad [property] '[value]'
     Then the LRS responds with HTTP [HTTP]
 
     Where:
-        HTTP | property         | value
-        400  | resource         | agent/profile
-        400  | resource         | agents/profiles
-        405  | resource         | agents
-        400  | version header   | bad version
-        400  | version header   | 3.8.0
-        400  | authority header | Basic badAuth
-        401  | authority header | Basic TnsHNWplME1YZnc0VzdLTHRIWTo0aDdBb253Ml85WU53vSZLNlVZ
-        400  | method           | POST
+        HTTP | property            | value
+        400  | resource            | agent/profile
+        400  | resource            | agents/profiles
+        405  | resource            | agents
+        400  | version header      | bad version
+        400  | version header      | 3.8.0
+        400  | authority header    | Basic badAuth
+        401  | authority header    | Basic TnsHNWplME1YZnc0VzdLTHRIWTo0aDdBb253Ml85WU53vSZLNlVZ
+        400  | method              | POST
+        400  | Content-Type header | bad content type
 
 Scenario: Bad save agent profile: typical request with [modifier] agent parameter with bad [property] '[value]'
 

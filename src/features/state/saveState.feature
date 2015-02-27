@@ -64,7 +64,7 @@ Scenario: Good save state: [type] request with [property] set to '[value]'
 
     Where:
         type    | property            | value
-        typical | Content-Type header | test content type
+        typical | Content-Type header | application/unknown
         typical | stateId parameter   | test state id
         typical | content             | test content
         JSON    | method              | POST
@@ -115,6 +115,7 @@ Scenario: Bad save state: [type] request with bad [property] '[value]'
         400  | typical          | activityId parameter   | bad URI
         400  | withRegistration | activityId parameter   | bad URI
         400  | withRegistration | registration parameter | bad UUID
+        400  | typical          | Content-Type header    | bad content type
 
 Scenario: Bad save state: typical request with [modifier] agent parameter with bad [property] '[value]'
 

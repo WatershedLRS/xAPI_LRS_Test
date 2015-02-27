@@ -33,7 +33,7 @@ Scenario: Good save activity profile: [type] request with [property] set to '[va
 
     Where:
         type    | property            | value
-        typical | Content-Type header | test content type
+        typical | Content-Type header | application/unknown
         typical | content             | test content
         JSON    | method              | POST
 
@@ -76,3 +76,4 @@ Scenario: Bad save activity profile: typical request with bad [property] '[value
         401  | authority header     | Basic TnsHNWplME1YZnc0VzdLTHRIWTo0aDdBb253Ml85WU53vSZLNlVZ
         400  | method               | POST
         400  | activityId parameter | bad URI
+        400  | Content-Type header  | bad content type
