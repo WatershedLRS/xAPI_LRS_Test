@@ -11,7 +11,7 @@ trap cleanup EXIT
 cd src
 npm install
 
-ORGANIZATION=`curl -u $KEY:$SECRET https://$HOST/api/organizations -XPOST -d"{\"name\": \"Canformance Test $BUILD_NUMBER\"}" -H "Content-Type: application/json" -i -s | grep Location: | sed 's/Location: //' | tr -d '\r'`
+ORGANIZATION=`curl -u $KEY:$SECRET http://$HOST/api/organizations -XPOST -d"{\"name\": \"Canformance Test $BUILD_NUMBER\"}" -H "Content-Type: application/json" -i -s | grep Location: | sed 's/Location: //' | tr -d '\r'`
 if [ -z "$ORGANIZATION" ]; then
     echo "couldn't create organization, failing."
     exit -1
