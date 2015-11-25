@@ -8,13 +8,11 @@ contentTypeCheck = function (res, type) {
     if (type !== "json") {
         return false;
     }
-    return res.headers["content-type"] === "application/json" ||
-        res.headers["content-type"].indexOf("application/json;") === 0;
+    return res.headers["content-type"].indexOf("application/json") === 0;
 };
 
 versionCheck = function (res) {
-    return res.headers["x-experience-api-version"] === "1.0.1" ||
-           res.headers["x-experience-api-version"] === "1.0.0";
+    return res.headers["x-experience-api-version"].indexOf("1.0") === 0;
 };
 
 responses = {
